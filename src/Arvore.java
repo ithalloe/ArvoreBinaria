@@ -1,0 +1,32 @@
+public class Arvore {
+        No raiz;
+        public Arvore() {
+
+            No noA = new No("a");
+            No noB = new No("b");
+            No noC = new No("c");
+            No noD = new No("d");
+            No noE = new No("e");
+            No noF = new No("f");
+    
+            noA.esquerda = noB;
+            noA.direita = noC;
+    
+            noB.esquerda = noD;
+            noB.direita = noE;
+
+            noC.direita = noF;
+    
+            this.raiz = noA;
+        }
+        public void percorrerEmOrdem(No no) {
+            if (no != null) {
+                percorrerEmOrdem(no.esquerda);
+                System.out.print(no.valor + " ");
+                percorrerEmOrdem(no.direita);
+            }
+        }
+        public void mostrarPercurso() {
+            percorrerEmOrdem(raiz);
+        }
+    }
