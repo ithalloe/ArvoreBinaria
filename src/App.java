@@ -4,4 +4,9 @@ public class App {
         System.out.println("Percurso em ordem:");
         arvore.mostrarPercurso();
     }
+    public static void main(String[] args) {
+        Arvore arvore = new Arvore();
+        int totalNos = arvore.contarNos(arvore.raiz);
+        System.out.println("Total de nós: " + totalNos); 
+    }
 }
