@@ -29,4 +29,10 @@ public class Arvore {
         public void mostrarPercurso() {
             percorrerEmOrdem(raiz);
         }
+        public int contarNos(No no) {
+        if (no == null) {
+            return 0;
+        }
+        return 1 + contarNos(no.esquerda) + contarNos(no.direita);
+    }
     }
