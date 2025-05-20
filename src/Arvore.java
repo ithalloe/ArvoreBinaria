@@ -34,5 +34,17 @@ public class Arvore {
             return 0;
         }
         return 1 + contarNos(no.esquerda) + contarNos(no.direita);
+                
+    public void percorrerPreOrdem(No no) {
+        if (no == null) {
+            return; 
+        }
+        System.out.print(no.valor + " ");
+        percorrerPreOrdem(no.esquerda);
+        percorrerPreOrdem(no.direita);
+    }
+     public void percorrer() {
+        percorrerPreOrdem(raiz);
+    }
     }
     }
