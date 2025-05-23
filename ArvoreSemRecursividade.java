@@ -19,6 +19,19 @@ public class Arvore {
         noC.direita = noF;
         this.raiz = noA;
     }
+      public int contarNos() {
+        if (raiz == null) return 0;
+        int count = 0;
+        Stack<No> pilha = new Stack<>();
+        pilha.push(raiz);
+        while (!pilha.isEmpty()) {
+            No atual = pilha.pop();
+            count++;
+            if (atual.direita != null) pilha.push(atual.direita);
+            if (atual.esquerda != null) pilha.push(atual.esquerda);
+        }
+        return count;
+    }
     public void percorrerEmOrdem() {
         Stack<No> pilha = new Stack<>();
         No atual = raiz;
@@ -33,7 +46,6 @@ public class Arvore {
             atual = atual.direita;
         }
     }
-
     public void percorrerPreOrdem() {
         if (raiz == null) return;
         Stack<No> pilha = new Stack<>();
@@ -60,19 +72,6 @@ public class Arvore {
         while (!pilha2.isEmpty()) {
             System.out.print(pilha2.pop().valor + " ");
         }
-    }
-    public int contarNos() {
-        if (raiz == null) return 0;
-        int count = 0;
-        Stack<No> pilha = new Stack<>();
-        pilha.push(raiz);
-        while (!pilha.isEmpty()) {
-            No atual = pilha.pop();
-            count++;
-            if (atual.direita != null) pilha.push(atual.direita);
-            if (atual.esquerda != null) pilha.push(atual.esquerda);
-        }
-        return count;
     }
     public void percorrerEmLargura() {
         if (raiz == null) return;
