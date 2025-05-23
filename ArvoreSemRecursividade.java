@@ -85,3 +85,6 @@ public class Arvore {
         }
     }
 }
+
+// Favor quando for testar, usar separadamente a parte desejada em conjunto com o main da classe App 
+//Ithallo Emanuel
