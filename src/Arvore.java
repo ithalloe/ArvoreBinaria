@@ -46,5 +46,13 @@ public class Arvore {
      public void percorrer() {
         percorrerPreOrdem(raiz);
     }
+    public void percorrerPosOrdem(No no) {
+    if (no == null) {
+        return;
+    }
+    percorrerPosOrdem(no.esquerda);
+    percorrerPosOrdem(no.direita);
+    System.out.print(no.valor + " ");
+    }
     }
     }
