@@ -54,5 +54,31 @@ public class Arvore {
     percorrerPosOrdem(no.direita);
     System.out.print(no.valor + " ");
     }
+    public int altura(No no) {
+    if (no == null) {
+        return 0;
     }
+    int alturaEsq = altura(no.esquerda);
+    int alturaDir = altura(no.direita);
+    return 1 + Math.max(alturaEsq, alturaDir);
+}
+
+public void imprimirNivel(No no, int nivel) {
+    if (no == null) {
+        return;
     }
+    if (nivel == 1) {
+        System.out.print(no.valor + " ");
+    } else if (nivel > 1) {
+        imprimirNivel(no.esquerda, nivel - 1);
+        imprimirNivel(no.direita, nivel - 1);
+    }
+  }
+    public void percorrerEmLargura() {
+    int h = altura(raiz);
+    for (int i = 1; i <= h; i++) {
+    imprimirNivel(raiz, i);
+     }
+    }
+   }
+
