@@ -13,4 +13,9 @@ public class App {
         Arvore arvore = new Arvore();
         arvore.percorrer();
     }
+    public static void main(String[] args) {
+        Arvore arvore = new Arvore();
+        System.out.print("Percurso Pós-Ordem: ");
+        arvore.percorrerPosOrdem(arvore.raiz);
+    }
 }
