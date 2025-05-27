@@ -35,7 +35,6 @@ public class Arvore {
     public void percorrerEmOrdem() {
         Stack<No> pilha = new Stack<>();
         No atual = raiz;
-
         while (atual != null || !pilha.isEmpty()) {
             while (atual != null) {
                 pilha.push(atual);
@@ -65,7 +64,6 @@ public class Arvore {
         while (!pilha1.isEmpty()) {
             No atual = pilha1.pop();
             pilha2.push(atual);
-
             if (atual.esquerda != null) pilha1.push(atual.esquerda);
             if (atual.direita != null) pilha1.push(atual.direita);
         }
@@ -83,6 +81,27 @@ public class Arvore {
             if (atual.esquerda != null) fila.add(atual.esquerda);
             if (atual.direita != null) fila.add(atual.direita);
         }
+    }
+    public int contarNosFolha() {
+        if (raiz == null) {
+            return 0;
+        }
+        int contador = 0;
+        Queue<No> fila = new LinkedList<>();
+        fila.add(raiz);
+        while (!fila.isEmpty()) {
+            No atual = fila.poll();
+            if (atual.esquerda == null && atual.direita == null) {
+                contador++;
+            }
+            if (atual.esquerda != null) {
+                fila.add(atual.esquerda);
+            }
+            if (atual.direita != null) {
+                fila.add(atual.direita);
+            }
+        }
+        return contador;
     }
 }
 
