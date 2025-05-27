@@ -23,4 +23,9 @@ public class App {
         System.out.print("Percurso em Largura: ");
         arvore.percorrerEmLargura();
     }
+    public static void main(String[] args) {
+        Arvore arvore = new Arvore();
+        int totalFolhas = arvore.contarNosFolha();
+        System.out.println("Total de nós folha: " + totalFolhas);
+    }
 }
