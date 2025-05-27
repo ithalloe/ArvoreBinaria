@@ -33,6 +33,11 @@ public class App {
         arvore.percorrerEmLargura();
     }
 }
+  public static void main(String[] args) {
+       Arvore arvore = new Arvore();
+        int totalFolhas = arvore.contarNosFolha();
+        System.out.println("Total de nós folha: " + totalFolhas);
+    }
 
 // Favor quando for testar, usar separadamente a parte desejada em conjunto com o metodo da classe Arvore 
 //Ithallo Emanuel
