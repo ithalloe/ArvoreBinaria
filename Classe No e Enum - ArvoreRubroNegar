@@ -1,0 +1,19 @@
+public enum Cor {
+    Vermelho,
+    Preto
+}
+
+public class No {
+    int valor;
+    No esquerdo, direito, pai;
+    Cor cor;
+
+    public No(int valor) {
+        this.valor = valor;
+        this.esquerdo = null;
+        this.direito = null;
+        this.pai = null;
+        this.cor = Cor.Vermelho; 
+    }
+}
+
