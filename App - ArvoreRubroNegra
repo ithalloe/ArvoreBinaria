@@ -1,0 +1,11 @@
+public class App {
+    public static void main(String[] args) {
+        ArvoreRubroNegra arvore = new ArvoreRubroNegra();
+        int[] valores = {10, 20, 30, 5, 15, 25, 1};
+        for (int v : valores) {
+            arvore.inserir(v);
+        }
+        System.out.println("Percurso em ordem:");
+        arvore.emOrdem();
+    }
+}
