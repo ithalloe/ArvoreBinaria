@@ -1,0 +1,103 @@
+public class ArvoreRubroNegra {
+    private No raiz;
+
+    public void inserir(int valor) {
+        No novo = new No(valor);
+        raiz = inserir(raiz, novo);
+        corrigirInsercao(novo);
+    }
+    private No inserir(No atual, No novo) {
+        if (atual == null) return novo;
+        if (novo.valor < atual.valor) {
+            atual.esquerdo = inserir(atual.esquerdo, novo);
+            atual.esquerdo.pai = atual;
+        } else {
+            atual.direito = inserir(atual.direito, novo);
+            atual.direito.pai = atual;
+        }
+        return atual;
+    }
+    private void corrigirInsercao(No no) {
+        while (no != raiz && no.pai.cor == Cor.Vermelho) {
+            No avo = no.pai.pai;
+            if (no.pai == avo.esquerdo) {
+            No tio = avo.direito;
+            if (tio != null && tio.cor == Cor.Vermelho) {
+               no.pai.cor = Cor.Preto;
+               tio.cor = Cor.Preto;
+               avo.cor = Cor.Vermelho;
+               no = avo;
+           } else {
+                if (no == no.pai.direito) {
+                no = no.pai;
+                rotacaoEsquerda(no);
+              }
+                no.pai.cor = Cor.Preto;
+                avo.cor = Cor.Vermelho;
+                rotacaoDireita(avo);
+              }
+            } else {
+             No tio = avo.esquerdo;
+              if (tio != null && tio.cor == Cor.Vermelho) {
+                 no.pai.cor = Cor.Preto;
+                 tio.cor = Cor.Preto;
+                 avo.cor = Cor.Vermelho;
+                 no = avo;
+            } else {
+               if (no == no.pai.esquerdo) {
+                no = no.pai;
+                rotacaoDireita(no);
+             }
+                no.pai.cor = Cor.Preto;
+                avo.cor = Cor.Vermelho;
+                rotacaoEsquerda(avo);
+                }
+            }
+        }
+        raiz.cor = Cor.Preto;
+    }
+    private void rotacaoEsquerda(No no) {
+        No y = no.direito;
+        no.direito = y.esquerdo;
+        if (y.esquerdo != null)
+            y.esquerdo.pai = no;
+        y.pai = no.pai;
+        if (no.pai == null)
+            raiz = y;
+        else if (no == no.pai.esquerdo)
+            no.pai.esquerdo = y;
+        else
+            no.pai.direito = y;
+        y.esquerdo = no;
+        no.pai = y;
+    }
+
+    private void rotacaoDireita(No no) {
+        No y = no.esquerdo;
+        no.esquerdo = y.direito;
+        if (y.direito != null)
+            y.direito.pai = no;
+        y.pai = no.pai;
+        if (no.pai == null)
+            raiz = y;
+        else if (no == no.pai.direito)
+            no.pai.direito = y;
+        else
+            no.pai.esquerdo = y;
+        y.direito = no;
+        no.pai = y;
+    }
+
+    public void emOrdem() {
+        emOrdem(raiz);
+        System.out.println();
+    }
+
+    private void emOrdem(No no) {
+        if (no != null) {
+            emOrdem(no.esquerdo);
+            System.out.print(no.valor + "(" + (no.cor == Cor.Vermelho ? "R" : "P") + ") ");
+            emOrdem(no.direito);
+        }
+    }
+}
